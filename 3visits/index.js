@@ -1,5 +1,6 @@
 const express = require('express');
 const { createClient } = require('redis');
+const process = require('process');
 
 const app = express();
 
@@ -16,6 +17,7 @@ const getRedisClient = async () => {
 
 let redisClient;
 app.get('/', async (req, res) => {
+  process.exit(1);
   try {
     if (!redisClient) {
       redisClient = await getRedisClient();

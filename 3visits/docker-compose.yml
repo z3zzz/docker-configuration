@@ -7,6 +7,7 @@ services:
       - 6379
   node-app:
     container_name: app
+    restart: on-failure
     build: .
     ports:
       - "5000:5000"
