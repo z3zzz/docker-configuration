@@ -1,8 +1,14 @@
 version: '3'
 services:
-  redis-server:
+  redis:
+    container_name: cache
     image: 'redis'
+    expose: 
+      - 6379
   node-app:
+    container_name: app
     build: .
     ports:
       - "5000:5000"
+    environment:
+      - REDIS_URL=redis://cache
